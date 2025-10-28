@@ -107,14 +107,18 @@ export default function BlockConfigPanel({
     // field reference dropdown (references to accumulated_state fields)
     if (schema.isFieldReference) {
       if (availableFields.length > 0) {
-        // use Select dropdown when fields are available
+        // include current value if not in available fields
+        const allOptions = value && !availableFields.includes(value)
+          ? [value, ...availableFields]
+          : availableFields;
+
         return (
           <Select
             value={value}
             onChange={(e) => handleChange(key, e.target.value)}
             sx={{ width: "100%" }}
           >
-            {availableFields.map((field) => (
+            {allOptions.map((field) => (
               <Select.Option key={field} value={field}>
                 {field}
               </Select.Option>
