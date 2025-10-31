@@ -83,6 +83,7 @@ async def generate_from_file(
 
     return {"total": total, "success": success, "failed": failed}
 
+
 @app.post("/generate")
 async def generate(file: UploadFile = File(...), pipeline_id: int = Form(...)) -> dict[str, Any]:
     """start a new background job for pipeline execution from seed file"""

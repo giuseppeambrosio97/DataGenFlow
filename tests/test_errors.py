@@ -119,6 +119,7 @@ class TestErrorHandling:
     async def test_generator_error_handling(self):
         """generator handles connection errors gracefully"""
         from lib.generator import Generator  # type: ignore[import-not-found]
+
         from models import GenerationConfig
 
         config = GenerationConfig(endpoint="http://invalid:99999", model="test")
