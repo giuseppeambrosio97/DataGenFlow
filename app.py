@@ -28,6 +28,8 @@ job_queue = JobQueue()
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     await storage.init_db()
     yield
+    # close storage connection on shutdown
+    await storage.close()
 
 
 app = FastAPI(title="DataGenFlow", version="0.1.0", lifespan=lifespan)
