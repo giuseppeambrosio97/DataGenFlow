@@ -59,7 +59,7 @@ clean:
 	rm -rf .mypy_cache .ruff_cache
 	rm -rf *.pyc */*.pyc */*/*.pyc
 	rm -rf data/*.db
-	rm -rf frontend/build frontend/.svelte-kit frontend/node_modules
+	rm -rf frontend/build frontend/node_modules
 
 lint:
 	uv run ruff check .
